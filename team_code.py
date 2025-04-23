@@ -9,7 +9,8 @@ import torchvision.transforms.functional as TF
 from glob import glob
 import sys
 
-from model_RFDN import RFDN  # make sure model_RFDN.py is in the same directory
+from model_RFDN_baseline import RFDN
+from model_RFDN_advanced import RFDN
 
 from degradations import downsample_raw, convert_to_tensor, simple_deg_simulation
 from blur import apply_psf

@@ -1,6 +1,7 @@
 import torch
 import torch.nn.functional as F
-from model_RFDN import RFDN
+from model_RFDN_advanced import RFDN
+from model_RFDN_baseline import RFDN
 from torch.utils.data import Dataset, DataLoader
 
 from skimage.metrics import peak_signal_noise_ratio as compare_psnr
