@@ -19,10 +19,10 @@ import os
 import argparse
 
 kernels = np.load("kernels.npy", allow_pickle=True)
-print(kernels.shape)
+# print(kernels.shape)
 # plot_all([k for k in kernels])
 
-OUT_PATH = "results_test/"
+# OUT_PATH = "results_test/"
 # RAWS = sorted(glob("train_raws_10/*.npz"))
 RAWS = sorted(glob("test_raws/*.npz"))
 MAX_VAL = 2**12 - 1
@@ -107,6 +107,7 @@ def evaluate(model, dataloader, device):
 
 parser = argparse.ArgumentParser(description="Evaluate models on RAW dataset")
 parser.add_argument('--model', type=str, required=True, help='load the baseline/advanced model')
+parser.add_argument('--data_dir', type=str, required=True, help='Test data directory')
 args = parser.parse_args()
 
 
@@ -118,9 +119,12 @@ else:
     model = RFDN_advanced(in_nc=4, out_nc=4, upscale=4).to(device)
 
 model.load_state_dict(torch.load("results/rfdn_model_"+args.model+".pth", map_location=device))
-print("Model loaded.")
+if args.model== 'baseline':
+    print("Baseline model loaded.")
+else:
+    print("Advanced model loaded.")
 
-dataset = RAWDataset("test_raws")
+dataset = RAWDataset(args.data_dir)
 dataloader = DataLoader(dataset, batch_size=1, shuffle=False)
 
 evaluate(model, dataloader, device)
