@@ -2,7 +2,7 @@
 
 ## Downloading the test data
 
-* Please download the test data from the following google drive link - https://drive.google.com/file/d/15u0MZOiNT4Cr6yVyYNAfMNDEqHiVB5MT/view?usp=sharing
+* Please download the test data from the following google drive link and unzip the data - https://drive.google.com/file/d/15u0MZOiNT4Cr6yVyYNAfMNDEqHiVB5MT/view?usp=sharing
 
 ## Running the baseline model
 
