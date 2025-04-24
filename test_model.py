@@ -1,7 +1,7 @@
 import torch
 import torch.nn.functional as F
-from model_RFDN_advanced import RFDN
-from model_RFDN_baseline import RFDN
+from model_RFDN_advanced import RFDN as RFDN_advanced
+from model_RFDN_baseline import RFDN as RFDN_baseline
 from torch.utils.data import Dataset, DataLoader
 
 from skimage.metrics import peak_signal_noise_ratio as compare_psnr
@@ -16,6 +16,7 @@ from utils import plot_all, load_raw, postprocess_raw, demosaic
 from glob import glob
 import torchvision.transforms.functional as TF
 import os
+import argparse
 
 kernels = np.load("kernels.npy", allow_pickle=True)
 print(kernels.shape)
@@ -103,10 +104,20 @@ def evaluate(model, dataloader, device):
 
 
 # --------- Run Evaluation ----------
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model = RFDN(in_nc=4, out_nc=4, upscale=4).to(device)
 
-model.load_state_dict(torch.load("results/rfdn_model_advanced.pth", map_location=device))
+parser = argparse.ArgumentParser(description="Evaluate models on RAW dataset")
+parser.add_argument('--model', type=str, required=True, help='load the baseline/advanced model')
+args = parser.parse_args()
+
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+if args.model== 'baseline':
+    model = RFDN_baseline(in_nc=4, out_nc=4, upscale=4).to(device)
+else:
+    model = RFDN_advanced(in_nc=4, out_nc=4, upscale=4).to(device)
+
+model.load_state_dict(torch.load("results/rfdn_model_"+args.model+".pth", map_location=device))
 print("Model loaded.")
 
 dataset = RAWDataset("test_raws")
