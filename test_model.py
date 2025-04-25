@@ -24,10 +24,7 @@ kernels = np.load("kernels.npy", allow_pickle=True)
 
 # OUT_PATH = "results_test/"
 # RAWS = sorted(glob("train_raws_10/*.npz"))
-RAWS = sorted(glob("test_raws/*.npz"))
-MAX_VAL = 2**12 - 1
-DOWNSAMPLE = False
-print(f"Found {len(RAWS)} test files")
+
 
 
 def load_raw(raw_path, max_val=2**12 - 1):
@@ -110,6 +107,11 @@ parser.add_argument('--model', type=str, required=True, help='load the baseline/
 parser.add_argument('--data_dir', type=str, required=True, help='Test data directory')
 args = parser.parse_args()
 
+
+RAWS = sorted(glob(args.data_dir+"/*.npz"))
+MAX_VAL = 2**12 - 1
+DOWNSAMPLE = False
+print(f"Found {len(RAWS)} test files")
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
