@@ -17,6 +17,3 @@
 * Please run the following commands<br/>
 
 `python3 test_model.py --model 'advanced' --data_dir 'test_raws'`<br/>
-
-
-TEST_DATA_DIR is the directory for test data samples.
