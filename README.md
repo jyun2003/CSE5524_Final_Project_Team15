@@ -1,20 +1,22 @@
 # CSE5524_Final_Project_Team15 : Raw Image Super Resolution Challenge
 
-## Downloading the test data
+## Installing the required packages
 
-* Please download the test data from the following google drive link and unzip the data - https://drive.google.com/file/d/15u0MZOiNT4Cr6yVyYNAfMNDEqHiVB5MT/view?usp=sharing
+* Please run the following commands<br/>
+
+`pip install -r 'requirements.txt'`<br/>
 
 ## Running the baseline model
 
 * Please run the following commands<br/>
 
-`python3 test_model.py --model baseline --data_dir TEST_DATA_DIR`<br/>
+`python3 test_model.py --model 'baseline' --data_dir 'test_raws'`<br/>
 
 ## Running the advanced model
 
 * Please run the following commands<br/>
 
-`python3 test_model.py --model advanced --data_dir TEST_DATA_DIR`<br/>
+`python3 test_model.py --model 'advanced' --data_dir 'test_raws'`<br/>
 
 
 TEST_DATA_DIR is the directory for test data samples.
