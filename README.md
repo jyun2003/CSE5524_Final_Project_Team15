@@ -1,4 +1,5 @@
-# CSE5524_Final_Project_Team15 : Raw Image Super Resolution Challenge
+# CSE 5524 Final Project : Raw Image Super Resolution Challenge
+# Team 15 : Yuan Lu, James Huang, K M Naimul Hassan
 
 ## Installing the required packages
 
